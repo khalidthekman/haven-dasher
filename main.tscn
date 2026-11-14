@@ -1,0 +1,342 @@
+[gd_scene format=3 uid="uid://dqh1tbmjjymgj"]
+
+[ext_resource type="Script" uid="uid://dpag2kjscpvig" path="res://player.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://bd6joay88cpig" path="res://pixil-frame-0 (4).png" id="1_1bvp3"]
+[ext_resource type="Script" uid="uid://dqcfws4a7ik0f" path="res://main.gd" id="1_4c57u"]
+[ext_resource type="Texture2D" uid="uid://dmupge8n2ua57" path="res://pixil-frame-0 (3).png" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://ejt88usymmio" path="res://pixil-frame-0 (2).png" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://dqdthe04s8x3n" path="res://platform.gd" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://bjjrh5m183oqo" path="res://area_2d.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://ctplpir11c1av" path="res://pixil-frame-0 (5).png" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://b6vko6yhufgis" path="res://pixil-frame-0 (1).png" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://n5tbrot8w5r8" path="res://coin.gd" id="8_kek77"]
+[ext_resource type="AudioStream" uid="uid://bm0fw5yaqs6rr" path="res://freesound_gamestudio-drop-coin-384921.mp3" id="11_efxa6"]
+[ext_resource type="AudioStream" uid="uid://b7hm6inv2ob4m" path="res://10. Eastern Ghostly Dream ~ Ancient Temple.mp3" id="12_dg77c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t38bf"]
+size = Vector2(115, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fw65"]
+size = Vector2(41.944695, 278.65112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1lf3"]
+size = Vector2(1008.1708, 285.2083)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2brax"]
+size = Vector2(13.025307, 10.172322)
+
+[node name="Node2D" type="Node2D" unique_id=281450105]
+script = ExtResource("1_4c57u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1288913312]
+
+[node name="CoinCounter" type="Label" parent="CanvasLayer" unique_id=1327352362]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Coins: 0"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=686036126]
+scale = Vector2(77365.92, -2078.9756)
+texture = ExtResource("1_1bvp3")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=754717566]
+position = Vector2(-125, 139.00002)
+scale = Vector2(2.200002, 1.92)
+script = ExtResource("1_0xm2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1344494988]
+position = Vector2(77.25001, 102.75)
+scale = Vector2(7.26, 8.42)
+texture = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2137206230]
+position = Vector2(77.5, 101)
+shape = SubResource("RectangleShape2D_t38bf")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=744733783]
+position = Vector2(116, 80)
+scale = Vector2(-0.6799996, 1)
+zoom = Vector2(0.2, 0.2)
+
+[node name="Ground" type="StaticBody2D" parent="." unique_id=1676916147]
+position = Vector2(205.00002, 2774)
+scale = Vector2(18.00279, -15.943683)
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=563469682]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1222851256]
+position = Vector2(0.86865234, -1.3398132)
+scale = Vector2(23.862696, 0.9999994)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Bouncy Platform" type="StaticBody2D" parent="." unique_id=383668769]
+position = Vector2(1315, 193)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy Platform" unique_id=1663232663]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("6_272bh")
+
+[node name="Col2" type="CollisionShape2D" parent="Bouncy Platform" unique_id=290320999]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Area2D" type="Area2D" parent="Bouncy Platform" unique_id=1614480251]
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy Platform/Area2D" unique_id=915094633]
+position = Vector2(-2.8082886, -4.1454773)
+shape = SubResource("RectangleShape2D_p1lf3")
+
+[node name="Bouncy Platform2" type="StaticBody2D" parent="." unique_id=233457326]
+position = Vector2(-2442, -669.99994)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy Platform2" unique_id=152472701]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("6_272bh")
+
+[node name="Col2" type="CollisionShape2D" parent="Bouncy Platform2" unique_id=1868356398]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Area2D" type="Area2D" parent="Bouncy Platform2" unique_id=1435003505]
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy Platform2/Area2D" unique_id=1478638965]
+position = Vector2(-2.8082886, -4.1454773)
+shape = SubResource("RectangleShape2D_p1lf3")
+
+[node name="Bouncy Platform3" type="StaticBody2D" parent="." unique_id=1154134743]
+position = Vector2(663, -1939)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy Platform3" unique_id=546194890]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("6_272bh")
+
+[node name="Col2" type="CollisionShape2D" parent="Bouncy Platform3" unique_id=34582342]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Area2D" type="Area2D" parent="Bouncy Platform3" unique_id=2000677013]
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy Platform3/Area2D" unique_id=157295685]
+position = Vector2(-2.8082886, -4.1454773)
+shape = SubResource("RectangleShape2D_p1lf3")
+
+[node name="Bouncy Platform4" type="StaticBody2D" parent="." unique_id=1406643650]
+position = Vector2(-2868, -2886)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy Platform4" unique_id=1518229040]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("6_272bh")
+
+[node name="Col2" type="CollisionShape2D" parent="Bouncy Platform4" unique_id=430046302]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Area2D" type="Area2D" parent="Bouncy Platform4" unique_id=207878841]
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy Platform4/Area2D" unique_id=873640104]
+position = Vector2(-2.8082886, -4.1454773)
+shape = SubResource("RectangleShape2D_p1lf3")
+
+[node name="Bouncy Platform5" type="StaticBody2D" parent="." unique_id=1128129]
+position = Vector2(932, -3662.9998)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Bouncy Platform5" unique_id=1136473955]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("6_272bh")
+
+[node name="Col2" type="CollisionShape2D" parent="Bouncy Platform5" unique_id=159196035]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Area2D" type="Area2D" parent="Bouncy Platform5" unique_id=1979427286]
+script = ExtResource("6_7mycd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy Platform5/Area2D" unique_id=1986003577]
+position = Vector2(-2.8082886, -4.1454773)
+shape = SubResource("RectangleShape2D_p1lf3")
+
+[node name="Normal Platform" type="StaticBody2D" parent="." unique_id=236005645]
+position = Vector2(-882, -426)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Normal Platform" unique_id=262696749]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="Col2" type="CollisionShape2D" parent="Normal Platform" unique_id=2107737621]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Normal Platform2" type="StaticBody2D" parent="." unique_id=911062078]
+position = Vector2(-1137, -2419)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Normal Platform2" unique_id=724320839]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="Col2" type="CollisionShape2D" parent="Normal Platform2" unique_id=1760978116]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Normal Platform4" type="StaticBody2D" parent="." unique_id=809269749]
+position = Vector2(-766, -3365)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Normal Platform4" unique_id=1054936187]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="Col2" type="CollisionShape2D" parent="Normal Platform4" unique_id=575629317]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Normal Platform5" type="StaticBody2D" parent="." unique_id=1108129124]
+position = Vector2(-829, -4274)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Normal Platform5" unique_id=980061025]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="Col2" type="CollisionShape2D" parent="Normal Platform5" unique_id=1677180814]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Normal Platform3" type="StaticBody2D" parent="." unique_id=75266129]
+position = Vector2(-1042, -1454)
+scale = Vector2(1.424362, 1.2061357)
+script = ExtResource("5_lquwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="Normal Platform3" unique_id=575922175]
+scale = Vector2(-5, 5.539799)
+texture = ExtResource("3_h2yge")
+
+[node name="Col2" type="CollisionShape2D" parent="Normal Platform3" unique_id=1369388717]
+position = Vector2(-0.11816406, 9.001663)
+scale = Vector2(23.862705, 1)
+shape = SubResource("RectangleShape2D_4fw65")
+
+[node name="Coin" type="Area2D" parent="." unique_id=477467576]
+position = Vector2(-558.00006, -1022)
+scale = Vector2(0.52277976, 0.5736314)
+script = ExtResource("8_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin" unique_id=1875111579]
+position = Vector2(-633, 282)
+scale = Vector2(25.176275, 25.265675)
+texture = ExtResource("8_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=1970002339]
+position = Vector2(-630.5, 319)
+rotation = -3.1415925
+scale = Vector2(35.853275, 47.58009)
+shape = SubResource("RectangleShape2D_2brax")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin" unique_id=1359612924]
+stream = ExtResource("11_efxa6")
+
+[node name="Coin2" type="Area2D" parent="." unique_id=1776166028]
+position = Vector2(-1025.0001, -1958)
+scale = Vector2(0.52277976, 0.5736314)
+script = ExtResource("8_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin2" unique_id=208613870]
+position = Vector2(-633, 282)
+scale = Vector2(25.176275, 25.265675)
+texture = ExtResource("8_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin2" unique_id=1872920726]
+position = Vector2(-630.5, 319)
+rotation = -3.1415925
+scale = Vector2(35.853275, 47.58009)
+shape = SubResource("RectangleShape2D_2brax")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin2" unique_id=1598100338]
+stream = ExtResource("11_efxa6")
+
+[node name="Coin3" type="Area2D" parent="." unique_id=1684548190]
+position = Vector2(325.99976, -2752)
+scale = Vector2(0.52277976, 0.5736314)
+script = ExtResource("8_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin3" unique_id=306340654]
+position = Vector2(-633, 282)
+scale = Vector2(25.176275, 25.265675)
+texture = ExtResource("8_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin3" unique_id=18773459]
+position = Vector2(-630.5, 319)
+rotation = -3.1415925
+scale = Vector2(35.853275, 47.58009)
+shape = SubResource("RectangleShape2D_2brax")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin3" unique_id=11706464]
+stream = ExtResource("11_efxa6")
+
+[node name="Coin4" type="Area2D" parent="." unique_id=782314991]
+position = Vector2(-1571.9999, -3428)
+scale = Vector2(0.52277976, 0.5736314)
+script = ExtResource("8_kek77")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin4" unique_id=1713874784]
+position = Vector2(-633, 282)
+scale = Vector2(25.176275, 25.265675)
+texture = ExtResource("8_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin4" unique_id=1135725680]
+position = Vector2(-630.5, 319)
+rotation = -3.1415925
+scale = Vector2(35.853275, 47.58009)
+shape = SubResource("RectangleShape2D_2brax")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin4" unique_id=1969713218]
+stream = ExtResource("11_efxa6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1379784728]
+stream = ExtResource("12_dg77c")
+autoplay = true
+parameters/looping = true
+
+[connection signal="body_entered" from="Bouncy Platform/Area2D" to="Bouncy Platform/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Bouncy Platform2/Area2D" to="Bouncy Platform2/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Bouncy Platform3/Area2D" to="Bouncy Platform3/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Bouncy Platform4/Area2D" to="Bouncy Platform4/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Bouncy Platform5/Area2D" to="Bouncy Platform5/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
+[connection signal="collected" from="Coin" to="." method="_on_coin_collected"]
+[connection signal="body_entered" from="Coin2" to="Coin2" method="_on_body_entered"]
+[connection signal="collected" from="Coin2" to="." method="_on_coin_collected"]
+[connection signal="body_entered" from="Coin3" to="Coin3" method="_on_body_entered"]
+[connection signal="collected" from="Coin3" to="." method="_on_coin_collected"]
+[connection signal="body_entered" from="Coin4" to="Coin4" method="_on_body_entered"]
+[connection signal="collected" from="Coin4" to="." method="_on_coin_collected"]
